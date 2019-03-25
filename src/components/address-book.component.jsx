@@ -5,12 +5,17 @@ import NewAddressFormComponent from './new-address-form.component';
 export default class AddressBookComponent extends React.Component {
     constructor(props) {
         super(props);
+
+        //set the component state
         this.state = {
             addresses: []
         }
+
+        //context binding
         this.savePersonCallback = this.savePersonCallback.bind(this);
     }
 
+    //method which save address to array in the component state
     savePersonCallback(obj) {
         console.log('savePersonCallback');
         console.log(obj);
@@ -28,6 +33,7 @@ export default class AddressBookComponent extends React.Component {
         })
     }
 
+    //method which render view, the method is always updated after state changing
     render() {
         const { welcomeMessage } = this.props;
         const state = this.state;

@@ -1,5 +1,6 @@
 import React from 'react';
 
+//an initial component state
 const initalState = {
     firstName: '',
     lastName: '',
@@ -11,12 +12,19 @@ const initalState = {
 export default class NewAddressFormComponent extends React.Component {
     constructor(props) {
         super(props);
+
+        //set initial state
         this.state = initalState;
+
+        //context bindings
         this.updateState = this.updateState.bind(this);
         this.addNewAddress = this.addNewAddress.bind(this);
+
+        //reference to props function which is invoking during on save event
         this.savePerson = this.props.savePersonCallback;
     }
 
+    //state updating
     updateState(sender) {
         const state = this.state;
         const { name, value } = sender.target;
@@ -31,6 +39,7 @@ export default class NewAddressFormComponent extends React.Component {
         const state = this.state;
         const { firstName, lastName, phoneNumber, address } = state;
 
+        //data validation
         if (firstName == '' || lastName == '' || phoneNumber == '' || address == '') {
             this.setState({
                 ...state,
@@ -42,6 +51,8 @@ export default class NewAddressFormComponent extends React.Component {
         this.savePerson({
             firstName, lastName, phoneNumber, address
         })
+
+        //state clean
         this.setState(initalState);
     }
 
@@ -49,7 +60,7 @@ export default class NewAddressFormComponent extends React.Component {
         const state = this.state;
         console.log(state);
         return (
-            <div className="row" >
+            <div className="row top-padding">
                 <div className="col-md-12">
                     <strong>{this.state.validationError}</strong>
                 </div>
