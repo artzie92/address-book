@@ -1,4 +1,5 @@
 import React from 'react';
+import CurrentAddressValuesComponent from './current-address-values.component';
 
 //an initial component state
 const initalState = {
@@ -58,26 +59,32 @@ export default class NewAddressFormComponent extends React.Component {
 
     render() {
         const state = this.state;
+        const { firstName, lastName, phoneNumber, address } = state;
         console.log(state);
         return (
             <div className="row top-padding">
                 <div className="col-md-12">
+                    {
+                        <CurrentAddressValuesComponent firstName={firstName} lastName={lastName} phoneNumber={phoneNumber} address={address} />
+                    }
+                </div>
+                <div className="col-md-12">
                     <strong>{this.state.validationError}</strong>
                 </div>
                 <div className="col-md-3">
-                    <input className="form-control" value={state.firstName} placeholder="First name"
+                    <input className="form-control" value={firstName} placeholder="First name"
                         name="firstName" onChange={this.updateState} />
                 </div>
                 <div className="col-md-3">
-                    <input className="form-control" value={state.lastName} placeholder="Last name"
+                    <input className="form-control" value={lastName} placeholder="Last name"
                         name="lastName" onChange={this.updateState} />
                 </div>
                 <div className="col-md-3">
-                    <input className="form-control" value={state.phoneNumber} placeholder="Phone number"
+                    <input className="form-control" value={phoneNumber} placeholder="Phone number"
                         name="phoneNumber" onChange={this.updateState} />
                 </div>
                 <div className="col-md-3">
-                    <input className="form-control" value={state.address} placeholder="Address"
+                    <input className="form-control" value={address} placeholder="Address"
                         name="address" onChange={this.updateState} />
                 </div>
                 <div className="col-md-12 text-right top-padding">
