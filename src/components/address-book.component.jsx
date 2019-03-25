@@ -21,15 +21,12 @@ export default class AddressBookComponent extends React.Component {
         console.log(obj);
 
         const state = this.state;
-        const addresses = state.addresses;
-        const { firstName, lastName, phoneNumber, address } = obj;
-        addresses.push({
-            firstName, lastName, phoneNumber, address
-        })
-
         this.setState({
             ...state,
-            addresses
+            addresses: [
+                ...state.addresses,
+                obj
+            ]
         })
     }
 
